@@ -1,0 +1,39 @@
+const Header = ({course}) => {
+    return (
+	<h1>{course.name}</h1>
+    )
+}
+const Part = ({part}) => {
+    return (
+	<li>{part.name} {part.exercises}</li>
+    )
+}
+
+const Content = ({course}) => {
+    return (
+	<ul style={{listStyle: 'none', paddingLeft: 0}}>
+	    {course.parts.map(part =>
+		<Part key={part.id} part={part} />
+	    )}
+	</ul>
+    )
+}
+
+const Total = ({course}) => {
+    const total = course.parts.map(part => part.exercises).reduce((a,b) => a + b)
+    return (
+	<p><strong>total of {total} exercises</strong></p>
+    )
+}
+	
+const Course = ({course}) => {
+    return (
+	<div>
+	    <Header course={course} />
+	    <Content course={course} />
+	    <Total course={course} />
+	</div>
+    )
+}
+
+export default Course

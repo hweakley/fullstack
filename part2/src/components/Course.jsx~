@@ -1,0 +1,28 @@
+const Header = ({course}) => {
+    return (
+	<h1>{course.name}</h1>
+    )
+}
+
+const Content = ({course}) => {
+    return (
+	<ul>
+	    {course.parts.map(part =>
+		<li key={part.id}>
+		    {part.name} {part.exercises}
+		</li>
+	    )}
+	</ul>
+    )
+}
+	
+const Course = ({course}) => {
+    return (
+	<div>
+	    <Header course={course} />
+	    <Content course={course} />
+	</div>
+    )
+}
+
+export default Course
